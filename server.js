@@ -5,7 +5,12 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 const cors = require('cors');
+
+
 const port = process.env.PORT || 4040;
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
 
 app.use(bodyParser.json());
 app.use(session({
