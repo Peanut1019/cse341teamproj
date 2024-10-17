@@ -1,5 +1,5 @@
 [{
-    "medisine_name": "Ibuprofen",
+    "medication_name": "Ibuprofen",
     "dosage": "80mg",
     "form": "Tablet",
     "prescription_required": "No"
