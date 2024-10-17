@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-//router.use('/', require('./swagger'));
+router.use('/', require('./swagger'));
 
 router.get('/', (req, res) => {
     //swagger.tags=['Hello World'] 
