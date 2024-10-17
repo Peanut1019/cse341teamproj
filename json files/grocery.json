@@ -1,0 +1,18 @@
+[{
+    "item_name": "Apples",
+    "price": "$.50",
+    "store": "1"
+},{
+    "item_name": "Bananas",
+    "price": "$.20",
+    "store": "1"
+},{
+    "item_name": "Strawberries",
+    "price": "$.75",
+    "store": "1"
+},{
+    "item_name": "Grapes",
+    "price": "$4.5",
+    "store": "1"
+}
+]

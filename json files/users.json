@@ -1,0 +1,30 @@
+[{
+    "first_name": "Frodo",
+    "last_name": "Baggins",
+    "username": "ringbeaer1",
+    "email": "fro@bagend.com",
+    "role": "User",
+    "status": "active"
+
+},{
+    "first_name": "Gimli",
+    "last_name": "Son of Glóin",
+    "username": "axe_master",
+    "email": "gimli@erebor.com",
+    "role": "User",
+    "status": "active"
+},{
+    "first_name": "Legolas",
+    "last_name": "Greenleaf",
+    "username": "elven_archer",
+    "email": "legolas@mirkwood.com",
+    "role": "User",
+    "status": "active"
+},{
+    "first_name": "Aragorn",
+    "last_name": "Elessar",
+    "username": "strider_king",
+    "email": "aragorn@rangers.com",
+    "role": "Admin",
+    "status": "active"
+}]

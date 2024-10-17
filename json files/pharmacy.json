@@ -1,0 +1,22 @@
+[{
+    "medisine_name": "Ibuprofen",
+    "dosage": "80mg",
+    "form": "Tablet",
+    "prescription_required": "No"
+
+},{
+    "medication_name": "Amoxicillin",
+    "dosage": "500mg",
+    "form": "Capsule",
+    "prescription_required": "Yes"
+},{
+    "medication_name": "Cetirizine",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "prescription_required": "No"
+},{
+    "medication_name": "Insulin Glargine",
+    "dosage": "100 units/mL",
+    "form": "Injection",
+    "prescription_required": "Yes"
+}]
