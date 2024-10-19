@@ -3,3 +3,5 @@ const router = express.Router();
 const pharmController = require('../controller/pharmacy');
 
 router.get('/', pharmController.getAll);
+
+module.exports = router;

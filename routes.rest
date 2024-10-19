@@ -1,0 +1,196 @@
+//Local Host
+
+#   THIS IS A DIVIDER FOR SECTIONS
+#
+#   UP NEXT IS THE GET ALL SECTION
+#
+
+
+### Get all Library
+GET http://localhost:4040/library
+### Get all grocery
+GET http://localhost:4040/grocery
+### Get all pharmacy
+GET http://localhost:4040/pharmacy
+### Get all users
+GET http://localhost:4040/users
+
+
+
+#   THIS IS A DIVIDER FOR SECTIONS
+#
+#   UP NEXT IS THE GET BY ID SECTION
+#
+
+
+
+### Get all Library by id
+GET http://localhost:4040/library/671199c94ca665efc45767c7
+### Get all grocery by id
+GET http://localhost:4040/grocery/671199534ca665efc45767c3
+### Get all pharmacy by id
+GET http://localhost:4040/pharmacy/67119a714ca665efc45767cb
+### Get all users by id
+GET http://localhost:4040/users/671198bb4ca665efc45767be
+
+
+
+#   THIS IS A DIVIDER FOR SECTIONS
+#
+#   UP NEXT IS THE CREATE ENTRY SECTION
+#
+
+
+### Create library entry
+POST http://localhost:4040/library 
+Content-Type: application/json
+
+{  
+    "book_id": 5,
+    "additionalInfo": false,
+    "series": "Throne of Glass",
+    "name": "Queen of Shadows",
+    "author_first": "Sarah ",
+    "author_middle": "J",
+    "author_last": "Maas",
+    "order_in_series": "5"
+}
+### Create grocery entry
+POST http://localhost:4040/grocery 
+Content-Type: application/json
+
+{
+    "item_name": "Oranges",
+    "price": "$3.2",
+    "store": "2"
+}
+
+### Create pharmacy entry
+POST http://localhost:4040/pharmacy 
+Content-Type: application/json
+
+{
+    "medication_name": "Amlodipine",
+    "dosage": "10 mg",
+    "form": "Tablet",
+    "prescription_required": "Yes"
+}
+### Create users entry
+POST http://localhost:4040/users 
+Content-Type: application/json
+
+{
+    "first_name": "Gandalf",
+    "last_name": "The Grey",
+    "username": "gandalf_the_wizard",
+    "email": "gandalf@middleearth.com",
+    "role": "Moderator",
+    "status": "active"
+}
+
+#   THIS IS A DIVIDER FOR SECTIONS
+#
+#   UP NEXT IS THE PUT BY ID SECTION
+#
+
+
+### put library
+PUT http://localhost:4040/library/671199c94ca665efc45767c7
+Content-Type: application/json
+
+ {
+    "_id": "671199c94ca665efc45767c7",
+    "book_id": 2,
+    "additionalInfo": false,
+    "series": "Throne of Glass",
+    "title": "crown of midnight",
+    "author_first": "Sarah ",
+    "author_middle": "J",
+    "author_last": "Maas",
+    "order_in_series": "5"
+  }
+### put grocery
+PUT http://localhost:4040/grocery/671199534ca665efc45767c3 
+Content-Type: application/json
+
+{
+    "item_name": "Bananas",
+    "price": "$.25",
+    "store": "1"
+}
+### put pharmacy
+PUT http://localhost:4040/pharmacy/67119a714ca665efc45767cb 
+Content-Type: application/json
+
+{
+    "medication_name": "Amoxicillin",
+    "dosage": "450mg",
+    "form": "Capsule",
+    "prescription_required": "Yes"
+}
+### put users
+PUT http://localhost:4040/users/67001fac09c7b1f5afd66d43 
+Content-Type: application/json
+
+{
+    "first_name": "Gimli",
+    "last_name": "Son of Glóin",
+    "username": "axe_master",
+    "email": "gimli@erebor.com",
+    "role": "User",
+    "status": "inactive"
+}
+
+
+#   THIS IS A DIVIDER FOR SECTIONS
+#
+#   UP NEXT IS THE DELETE ENTRY SECTION
+#
+
+
+### Delete library entry
+DELETE  http://localhost:4040/library/ 
+Content-Type: application/json
+
+{  
+    "book_id": 5,
+    "additionalInfo": false,
+    "series": "Throne of Glass",
+    "name": "Queen of Shadows",
+    "author_first": "Sarah ",
+    "author_middle": "J",
+    "author_last": "Maas",
+    "order_in_series": "5"
+}
+### Delete grocery entry
+DELETE  http://localhost:4040/grocery/
+Content-Type: application/json
+
+{
+    "item_name": "Oranges",
+    "price": "$3.2",
+    "store": "2"
+}
+
+### Delete pharmacy entry
+DELETE  http://localhost:4040/pharmacy/ 
+Content-Type: application/json
+
+{
+    "medication_name": "Amlodipine",
+    "dosage": "10 mg",
+    "form": "Tablet",
+    "prescription_required": "Yes"
+}
+### Delete users entry
+DELETE  http://localhost:4040/users/ 
+Content-Type: application/json
+
+{
+    "first_name": "Gandalf",
+    "last_name": "The Grey",
+    "username": "gandalf_the_wizard",
+    "email": "gandalf@middleearth.com",
+    "role": "Moderator",
+    "status": "active"
+}

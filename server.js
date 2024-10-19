@@ -8,9 +8,7 @@ const cors = require('cors');
 
 
 const port = process.env.PORT || 4040;
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
+
 
 app.use(bodyParser.json());
 app.use(session({
@@ -34,3 +32,17 @@ app.use(cors({methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']}));
 app.use(cors({origin: '*'}));
 app.use('/', require('./routes'));
 
+
+
+
+
+
+mongodb.initDb((err) => {
+    if (err) {
+        console.error('Failed to connect to MongoDB:', err);
+    } else {
+        app.listen(port, () => {
+            console.log(`Database connected successfully. Server is running on port ${port}`);
+        });
+    }
+});
