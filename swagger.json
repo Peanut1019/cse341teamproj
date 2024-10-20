@@ -5,33 +5,13 @@
     "description": "Users API",
     "version": "1.0.0"
   },
-  "host": "",
+  "host": "cse341teamproj.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
     "https"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/grocery/": {
       "get": {
         "description": "",

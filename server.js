@@ -32,10 +32,7 @@ app.use(cors({methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']}));
 app.use(cors({origin: '*'}));
 app.use('/', require('./routes'));
 
-
-
-
-
+// authentication code here
 
 mongodb.initDb((err) => {
     if (err) {
