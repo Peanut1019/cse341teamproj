@@ -5,15 +5,38 @@
     "description": "Users API",
     "version": "1.0.0"
   },
-  "host": "cse341teamproj.onrender.com",
+  "host": "",
   "basePath": "/",
   "schemes": [
     "http",
     "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/grocery/": {
       "get": {
+        "tags": [
+          "grocery"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -27,6 +50,9 @@
     },
     "/grocery/{id}": {
       "get": {
+        "tags": [
+          "grocery"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -42,12 +68,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
     "/library/": {
       "get": {
+        "tags": [
+          "library"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -61,6 +93,9 @@
     },
     "/library/{id}": {
       "get": {
+        "tags": [
+          "library"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -76,12 +111,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
     "/pharmacy/": {
       "get": {
+        "tags": [
+          "pharmacy"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -95,6 +136,9 @@
     },
     "/pharmacy/{id}": {
       "get": {
+        "tags": [
+          "pharmacy"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -110,12 +154,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
     "/users/": {
       "get": {
+        "tags": [
+          "users"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -129,6 +179,9 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "users"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -144,6 +197,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
