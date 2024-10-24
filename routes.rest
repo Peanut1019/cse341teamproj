@@ -115,7 +115,7 @@ Content-Type: application/json
 
 {
     "item_name": "Bananas",
-    "price": "$.25",
+    "price": "$.50",
     "store": "1"
 }
 ### put pharmacy
@@ -163,7 +163,7 @@ Content-Type: application/json
     "order_in_series": "5"
 }
 ### Delete grocery entry
-DELETE  http://localhost:4040/grocery/
+DELETE  http://localhost:4040/grocery/6719b09eae57266c39b86ae9
 Content-Type: application/json
 
 {
