@@ -31,4 +31,76 @@ const getOne = async (req, res) => {
   });
 };
 
-module.exports = { getAll, getOne };
+const addUser = async (req, res) => {
+    // #swagger.tags=["users"]
+    try {
+      const db = await mongodb.getDataBase().db("shoppego");
+      const usersCollection = db.collection("users");
+      const { first_name, last_name, username, email, role, status } = req.body;
+      const newUser = {
+        first_name,
+        last_name,
+        username,
+        email,
+        role,
+        status
+      };
+      const result = await usersCollection.insertOne(newUser);
+      return res.status(201).json({
+        message: "User added successfully",
+        data: result.insertedId,
+      });
+    } catch (error) {
+      console.error("Error adding user:", error);
+      res.status(500).json({ message: "Failed to add user", error });
+    }
+  };
+  
+  const updateUser = async (req, res) => {
+    // #swagger.tags=["users"]
+    try {
+      const db = await mongodb.getDataBase().db("shoppego");
+      const usersCollection = db.collection("users");
+      const userId = req.params.id;
+      const updatedData = req.body;
+  
+      const result = await usersCollection.updateOne(
+        { _id: new ObjectId(userId) },
+        { $set: updatedData }
+      );
+  
+      if (result.modifiedCount > 0) {
+        return res.status(200).json({
+          message: `User with ID ${userId} updated successfully`,
+        });
+      } else {
+        res.status(404).json({ message: "User not found" });
+      }
+    } catch (error) {
+      console.error("Error updating user:", error);
+      res.status(500).json({ message: "Failed to update user", error });
+    }
+  };
+  
+  const deleteUser = async (req, res) => {
+    // #swagger.tags=["users"]
+    try {
+      const db = await mongodb.getDataBase().db("shoppego");
+      const usersCollection = db.collection("users");
+      const userId = req.params.id;
+      const result = await usersCollection.deleteOne({
+        _id: new ObjectId(userId),
+      });
+  
+      if (result.deletedCount > 0) {
+        res.status(200).json({ message: "User deleted successfully" });
+      } else {
+        res.status(404).json({ message: "User not found" });
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      res.status(500).json({ message: "Failed to delete user", error });
+    }
+  };
+
+module.exports = { getAll, getOne, addUser, updateUser, deleteUser };
