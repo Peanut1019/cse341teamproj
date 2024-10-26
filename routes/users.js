@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controller/users');
+const {saveUser} = require('../middleware/validate');
+const {isAuthenticated} = require('../middleware/authenticate')
 
 /**
  * @route   GET /users
@@ -24,7 +26,7 @@ router.get("/:id", userController.getOne);
  * @desc    Add a new user
  * @access  Private
  */
-router.post("/", userController.addUser);
+router.post("/", isAuthenticated, saveUser, userController.addUser);
 
 /**
  * @route   PUT /users/:id
@@ -32,7 +34,7 @@ router.post("/", userController.addUser);
  * @param   {string} id - users ID
  * @access  Private
  */
-router.put("/:id", userController.updateUser);
+router.put("/:id", isAuthenticated, saveUser, userController.updateUser);
 
 /**
  * @route   DELETE /users/:id
@@ -40,6 +42,6 @@ router.put("/:id", userController.updateUser);
  * @param   {string} id - users ID
  * @access  Private
  */
-router.delete("/:id", userController.deleteUser);
+router.delete("/:id", isAuthenticated, userController.deleteUser);
 
 module.exports = router;

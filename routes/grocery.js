@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const groceryController = require("../controller/grocery");
+const {saveGrocery} = require('../middleware/validate');
+const {isAuthenticated} = require('../middleware/authenticate')
 
 /**
  * @route   GET /grocery
@@ -24,7 +26,7 @@ router.get("/:id", groceryController.getOne);
  * @desc    Add a new grocery item
  * @access  Private
  */
-router.post("/", groceryController.addGrocery);
+router.post("/", isAuthenticated, saveGrocery, groceryController.addGrocery);
 
 /**
  * @route   PUT /grocery/:id
@@ -32,7 +34,7 @@ router.post("/", groceryController.addGrocery);
  * @param   {string} id - grocery item ID
  * @access  Private
  */
-router.put("/:id", groceryController.updateGrocery);
+router.put("/:id", isAuthenticated, saveGrocery, groceryController.updateGrocery);
 
 /**
  * @route   DELETE /grocery/:id
@@ -40,5 +42,5 @@ router.put("/:id", groceryController.updateGrocery);
  * @param   {string} id - grocery item ID
  * @access  Private
  */
-router.delete("/:id", groceryController.deleteGrocery);
+router.delete("/:id", isAuthenticated, groceryController.deleteGrocery);
 module.exports = router;
