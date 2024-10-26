@@ -1,15 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const pharmController = require('../controller/pharmacy');
+const pharmController = require("../controller/pharmacy");
+const tryCatch = require("../errors/tryCatch");
 
 /**
  * @route   GET /pharmacy
- * @desc    Get all pharmacy item
+ * @desc    Get all pharmacy items
  * @access  Public
  */
-router.get("/", pharmController.getAll);
-
-
+router.get("/", tryCatch(pharmController.getAll));
 
 /**
  * @route   GET /pharmacy/:id
@@ -17,14 +16,14 @@ router.get("/", pharmController.getAll);
  * @param   {string} id - pharmacy item ID
  * @access  Public
  */
-router.get("/:id", pharmController.getOne);
+router.get("/:id", tryCatch(pharmController.getOne));
 
 /**
  * @route   POST /pharmacy
  * @desc    Add a new pharmacy item
  * @access  Private
  */
-router.post("/", pharmController.addPharmacy);
+router.post("/", tryCatch(pharmController.addPharmacy));
 
 /**
  * @route   PUT /pharmacy/:id
@@ -32,7 +31,7 @@ router.post("/", pharmController.addPharmacy);
  * @param   {string} id - pharmacy item ID
  * @access  Private
  */
-router.put("/:id", pharmController.updatePharmacy);
+router.put("/:id", tryCatch(pharmController.updatePharmacy));
 
 /**
  * @route   DELETE /pharmacy/:id
@@ -40,6 +39,6 @@ router.put("/:id", pharmController.updatePharmacy);
  * @param   {string} id - pharmacy item ID
  * @access  Private
  */
-router.delete("/:id", pharmController.deletePharmacy);
+router.delete("/:id", tryCatch(pharmController.deletePharmacy));
 
 module.exports = router;

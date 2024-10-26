@@ -1,15 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const groceryController = require("../controller/grocery");
+const tryCatch = require("../errors/tryCatch");
 
 /**
  * @route   GET /grocery
  * @desc    Get all grocery item
  * @access  Public
  */
-router.get("/", groceryController.getAll);
-
-
+router.get("/", tryCatch(groceryController.getAll));
 
 /**
  * @route   GET /grocery/:id
@@ -17,14 +16,14 @@ router.get("/", groceryController.getAll);
  * @param   {string} id - grocery item ID
  * @access  Public
  */
-router.get("/:id", groceryController.getOne);
+router.get("/:id", tryCatch(groceryController.getOne));
 
 /**
  * @route   POST /grocery
  * @desc    Add a new grocery item
  * @access  Private
  */
-router.post("/", groceryController.addGrocery);
+router.post("/", tryCatch(groceryController.addGrocery));
 
 /**
  * @route   PUT /grocery/:id
@@ -32,7 +31,7 @@ router.post("/", groceryController.addGrocery);
  * @param   {string} id - grocery item ID
  * @access  Private
  */
-router.put("/:id", groceryController.updateGrocery);
+router.put("/:id", tryCatch(groceryController.updateGrocery));
 
 /**
  * @route   DELETE /grocery/:id
@@ -40,5 +39,5 @@ router.put("/:id", groceryController.updateGrocery);
  * @param   {string} id - grocery item ID
  * @access  Private
  */
-router.delete("/:id", groceryController.deleteGrocery);
+router.delete("/:id", tryCatch(groceryController.deleteGrocery));
 module.exports = router;
