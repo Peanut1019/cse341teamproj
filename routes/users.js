@@ -10,7 +10,7 @@ const {isAuthenticated} = require('../middleware/authenticate')
  * @desc    Get all users
  * @access  Public
  */
-router.get("/", tryCatch(userController.getAll));
+router.get("/", tryCatch, userController.getAll);
 
 /**
  * @route   GET /users/:id
@@ -18,7 +18,7 @@ router.get("/", tryCatch(userController.getAll));
  * @param   {string} id - user ID
  * @access  Public
  */
-router.get("/:id", tryCatch(userController.getOne));
+router.get("/:id", tryCatch, userController.getOne);
 
 /**
  * @route   POST /users
