@@ -10,7 +10,7 @@ const tryCatch = require("../errors/tryCatch");
  * @desc    Get all grocery item
  * @access  Public
  */
-router.get("/", tryCatch(groceryController.getAll));
+router.get("/", tryCatch, groceryController.getAll);
 
 /**
  * @route   GET /grocery/:id
@@ -18,7 +18,7 @@ router.get("/", tryCatch(groceryController.getAll));
  * @param   {string} id - grocery item ID
  * @access  Public
  */
-router.get("/:id", tryCatch(groceryController.getOne));
+router.get("/:id", tryCatch, groceryController.getOne);
 
 /**
  * @route   POST /grocery
