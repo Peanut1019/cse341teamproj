@@ -1,42 +1,42 @@
 const express = require("express");
 const app = express();
 const mongodb = require("./data/database");
-const bodyParser = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
 const cors = require("cors");
-const createError = require("http-errors");
+const MongoStore = require("connect-mongo");
 const errorHandler = require("./errors/errorHandler");
 const { notFound } = require("./errors/notFound");
 
 const port = process.env.PORT || 4040;
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SESSION_SECRET || "secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: new MongoStore({ 
+      mongoUrl: process.env.MONGODB_URL,
+      dbName: "shoppego",
+    }),
+    cookie: {
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requestec-With, Content-Type, Accept, Z-Key"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
-  );
-  next();
-});
-app.use(cors({ methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"] }));
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
+
 app.use("/", require("./routes"));
 
 // authentication code here
@@ -64,7 +64,7 @@ passport.deserializeUser((user, done) => {
 app.get("/", (req, res) => {
   res.send(
     req.session.user !== undefined
-      ? `Logged in as ${req.session.user.displayName}`
+      ? `Logged in as ${req.session.user.username}`
       : "Logged Out"
   );
 });
@@ -73,7 +73,6 @@ app.get(
   "/github/callback",
   passport.authenticate("github", {
     failureRedirect: "/api-docs",
-    session: false,
   }),
   (req, res) => {
     req.session.user = req.user;
@@ -87,6 +86,7 @@ app.use(errorHandler);
 mongodb.initDb((err) => {
   if (err) {
     console.error("Failed to connect to MongoDB:", err);
+    process.exit(1);
   } else {
     app.listen(port, () => {
       console.log(
