@@ -12,6 +12,26 @@
     "https"
   ],
   "paths": {
+    "/login": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/": {
       "get": {
         "description": "",
@@ -34,22 +54,16 @@
     },
     "/grocery/": {
       "get": {
-        "tags": [
-          "grocery"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
         "tags": [
-          "grocery"
+          "grocery, addGrocery"
         ],
         "description": "",
         "parameters": [
@@ -76,6 +90,12 @@
           "201": {
             "description": "Created"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -84,13 +104,7 @@
     },
     "/grocery/{id}": {
       "get": {
-        "tags": [
-          "grocery"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -100,17 +114,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       },
       "put": {
         "tags": [
-          "grocery"
+          "grocery, updateGrocery"
         ],
         "description": "",
         "parameters": [
@@ -125,8 +136,14 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -135,7 +152,7 @@
       },
       "delete": {
         "tags": [
-          "grocery"
+          "grocery, deleteGrocery"
         ],
         "description": "",
         "parameters": [
@@ -149,6 +166,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -162,7 +182,7 @@
     "/library/": {
       "get": {
         "tags": [
-          "library"
+          "library, getAll"
         ],
         "description": "",
         "produces": [
@@ -176,7 +196,7 @@
       },
       "post": {
         "tags": [
-          "library"
+          "library, addBook"
         ],
         "description": "",
         "parameters": [
@@ -218,6 +238,12 @@
           "201": {
             "description": "Created"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -226,13 +252,7 @@
     },
     "/library/{id}": {
       "get": {
-        "tags": [
-          "library"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -242,17 +262,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       },
       "put": {
         "tags": [
-          "library"
+          "library, updateBook"
         ],
         "description": "",
         "parameters": [
@@ -267,8 +284,14 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -277,7 +300,7 @@
       },
       "delete": {
         "tags": [
-          "library"
+          "library, deleteBook"
         ],
         "description": "",
         "parameters": [
@@ -292,8 +315,14 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -303,22 +332,16 @@
     },
     "/pharmacy/": {
       "get": {
-        "tags": [
-          "pharmacy"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
         "tags": [
-          "pharmacy"
+          "pharmacy, addPharmacy"
         ],
         "description": "",
         "parameters": [
@@ -348,6 +371,12 @@
           "201": {
             "description": "Created"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -356,13 +385,7 @@
     },
     "/pharmacy/{id}": {
       "get": {
-        "tags": [
-          "pharmacy"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -372,17 +395,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       },
       "put": {
         "tags": [
-          "pharmacy"
+          "pharmacy, updatePharmacy"
         ],
         "description": "",
         "parameters": [
@@ -397,8 +417,14 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -407,7 +433,7 @@
       },
       "delete": {
         "tags": [
-          "pharmacy"
+          "pharmacy, deletePharmacy"
         ],
         "description": "",
         "parameters": [
@@ -421,6 +447,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -433,22 +462,16 @@
     },
     "/users/": {
       "get": {
-        "tags": [
-          "users"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
         "tags": [
-          "users"
+          "users, addUser"
         ],
         "description": "",
         "parameters": [
@@ -484,6 +507,12 @@
           "201": {
             "description": "Created"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -492,13 +521,7 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": [
-          "users"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -508,17 +531,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       },
       "put": {
         "tags": [
-          "users"
+          "users, updateUser"
         ],
         "description": "",
         "parameters": [
@@ -533,8 +553,14 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -543,7 +569,7 @@
       },
       "delete": {
         "tags": [
-          "users"
+          "users, deleteUser"
         ],
         "description": "",
         "parameters": [
@@ -558,8 +584,14 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"

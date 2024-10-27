@@ -2,7 +2,7 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
-  //#swagger.tags=["pharmacy"]
+  //#swagger.tags=["pharmacy, getAll"]
   const result = await mongodb
     .getDataBase()
     .db("shoppego")
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 };
 
 const getOne = async (req, res) => {
-  //#swagger.tags=["pharmacy"]
+  //#swagger.tags=["pharmacy, getOne"]
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must be a valid ID to work!");
   }
@@ -32,7 +32,7 @@ const getOne = async (req, res) => {
 };
 
 const addPharmacy = async (req, res) => {
-    // #swagger.tags=["pharmacy"]
+    // #swagger.tags=["pharmacy, addPharmacy"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const pharmacyCollection = db.collection("pharmacy");
@@ -55,7 +55,7 @@ const addPharmacy = async (req, res) => {
   };
   
   const updatePharmacy = async (req, res) => {
-    // #swagger.tags=["pharmacy"]
+    // #swagger.tags=["pharmacy, updatePharmacy"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const pharmacyCollection = db.collection("pharmacy");
@@ -81,7 +81,7 @@ const addPharmacy = async (req, res) => {
   };
   
   const deletePharmacy = async (req, res) => {
-    // #swagger.tags=["pharmacy"]
+    // #swagger.tags=["pharmacy, deletePharmacy"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const pharmacyCollection = db.collection("pharmacy");
