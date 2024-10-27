@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-const {tryCatcher} = require("../errors/tryCatch");
+const { tryCatcher } = require("../errors/tryCatch");
 
 router.use("/", require("./swagger"));
 
@@ -25,8 +25,11 @@ router.get(
 );
 
 router.get("/", (req, res) => {
-  //swagger.tags=['Hello World']
-  res.send("So Far So Good");
+  res.send(
+    req.session.user !== undefined
+      ? `Logged in as ${req.session.user.username}`
+      : "Logged Out"
+  );
 });
 
 module.exports = router;
