@@ -2,7 +2,7 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
-  //#swagger.tags=["library"]
+  //#swagger.tags=["library, getAll"]
   const result = await mongodb
     .getDataBase()
     .db("shoppego")
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 };
 
 const getOne = async (req, res) => {
-  //#swagger.tags=["library"]
+  //#swagger.tags=["library, getOne"]
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must be a valid ID to work!");
   }
@@ -32,7 +32,7 @@ const getOne = async (req, res) => {
 };
 
 const addBook = async (req, res) => {
-    // #swagger.tags=["library"]
+    // #swagger.tags=["library, addBook"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const libraryCollection = db.collection("library");
@@ -59,7 +59,7 @@ const addBook = async (req, res) => {
   };
   
   const updateBook = async (req, res) => {
-    // #swagger.tags=["library"]
+    // #swagger.tags=["library, updateBook"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const libraryCollection = db.collection("library");
@@ -85,7 +85,7 @@ const addBook = async (req, res) => {
   };
   
   const deleteBook = async (req, res) => {
-    // #swagger.tags=["library"]
+    // #swagger.tags=["library, deleteBook"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const libraryCollection = db.collection("library");

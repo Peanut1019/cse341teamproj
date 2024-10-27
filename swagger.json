@@ -63,7 +63,7 @@
       },
       "post": {
         "tags": [
-          "grocery"
+          "grocery, addGrocery"
         ],
         "description": "",
         "parameters": [
@@ -121,7 +121,7 @@
       },
       "put": {
         "tags": [
-          "grocery"
+          "grocery, updateGrocery"
         ],
         "description": "",
         "parameters": [
@@ -152,7 +152,7 @@
       },
       "delete": {
         "tags": [
-          "grocery"
+          "grocery, deleteGrocery"
         ],
         "description": "",
         "parameters": [
@@ -182,7 +182,7 @@
     "/library/": {
       "get": {
         "tags": [
-          "library"
+          "library, getAll"
         ],
         "description": "",
         "produces": [
@@ -196,7 +196,7 @@
       },
       "post": {
         "tags": [
-          "library"
+          "library, addBook"
         ],
         "description": "",
         "parameters": [
@@ -269,7 +269,7 @@
       },
       "put": {
         "tags": [
-          "library"
+          "library, updateBook"
         ],
         "description": "",
         "parameters": [
@@ -300,7 +300,7 @@
       },
       "delete": {
         "tags": [
-          "library"
+          "library, deleteBook"
         ],
         "description": "",
         "parameters": [
@@ -341,7 +341,7 @@
       },
       "post": {
         "tags": [
-          "pharmacy"
+          "pharmacy, addPharmacy"
         ],
         "description": "",
         "parameters": [
@@ -402,7 +402,7 @@
       },
       "put": {
         "tags": [
-          "pharmacy"
+          "pharmacy, updatePharmacy"
         ],
         "description": "",
         "parameters": [
@@ -433,7 +433,7 @@
       },
       "delete": {
         "tags": [
-          "pharmacy"
+          "pharmacy, deletePharmacy"
         ],
         "description": "",
         "parameters": [
@@ -471,7 +471,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users, addUser"
         ],
         "description": "",
         "parameters": [
@@ -538,7 +538,7 @@
       },
       "put": {
         "tags": [
-          "users"
+          "users, updateUser"
         ],
         "description": "",
         "parameters": [
@@ -569,7 +569,7 @@
       },
       "delete": {
         "tags": [
-          "users"
+          "users, deleteUser"
         ],
         "description": "",
         "parameters": [
