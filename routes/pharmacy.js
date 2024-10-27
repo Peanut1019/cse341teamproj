@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pharmController = require('../controller/pharmacy');
-<<<<<<< HEAD
-// const tryCatch = require("../errors/tryCatch");
-=======
 //const {tryCatcher} = require("../errors/tryCatch");
->>>>>>> 0725b0383c0aa6302325628fd94d15084d05b362
 const {savePharmacy} = require('../middleware/validate');
 const {isAuthenticated} = require('../middleware/authenticate');
 
@@ -15,11 +11,7 @@ const {isAuthenticated} = require('../middleware/authenticate');
  * @desc    Get all pharmacy items
  * @access  Public
  */
-<<<<<<< HEAD
-router.get("/", pharmController.getAll);
-=======
 router.get("/",  pharmController.getAll);
->>>>>>> 0725b0383c0aa6302325628fd94d15084d05b362
 
 /**
  * @route   GET /pharmacy/:id
