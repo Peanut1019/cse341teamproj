@@ -1,17 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const pharmController = require('../controller/pharmacy');
+const pharmController = require("../controller/pharmacy");
 //const {tryCatcher} = require("../errors/tryCatch");
-const {savePharmacy} = require('../middleware/validate');
-const {isAuthenticated} = require('../middleware/authenticate');
-
+const { savePharmacy } = require("../middleware/validate");
+const { isAuthenticated } = require("../middleware/authenticate");
 
 /**
  * @route   GET /pharmacy
  * @desc    Get all pharmacy items
  * @access  Public
  */
-router.get("/",  pharmController.getAll);
+router.get("/", pharmController.getAll);
 
 /**
  * @route   GET /pharmacy/:id
@@ -19,14 +18,14 @@ router.get("/",  pharmController.getAll);
  * @param   {string} id - pharmacy item ID
  * @access  Public
  */
-router.get("/:id",  pharmController.getOne);
+router.get("/:id", pharmController.getOne);
 
 /**
  * @route   POST /pharmacy
  * @desc    Add a new pharmacy item
  * @access  Private
  */
-router.post("/",  isAuthenticated, savePharmacy,  pharmController.addPharmacy);
+router.post("/", isAuthenticated, savePharmacy, pharmController.addPharmacy);
 
 /**
  * @route   PUT /pharmacy/:id
@@ -34,7 +33,12 @@ router.post("/",  isAuthenticated, savePharmacy,  pharmController.addPharmacy);
  * @param   {string} id - pharmacy item ID
  * @access  Private
  */
-router.put("/:id", isAuthenticated, savePharmacy,  pharmController.updatePharmacy);
+router.put(
+  "/:id",
+  isAuthenticated,
+  savePharmacy,
+  pharmController.updatePharmacy
+);
 
 /**
  * @route   DELETE /pharmacy/:id
@@ -42,6 +46,6 @@ router.put("/:id", isAuthenticated, savePharmacy,  pharmController.updatePharmac
  * @param   {string} id - pharmacy item ID
  * @access  Private
  */
-router.delete("/:id", isAuthenticated,   pharmController.deletePharmacy);
+router.delete("/:id", isAuthenticated, pharmController.deletePharmacy);
 
 module.exports = router;

@@ -3,21 +3,22 @@ const app = express();
 const mongodb = require("./data/database");
 const passport = require("passport");
 const session = require("express-session");
-const GitHubStrategy = require("passport-github2").Strategy;
 const cors = require("cors");
 const MongoStore = require("connect-mongo");
 const errorHandler = require("./errors/errorHandler");
 const { notFound } = require("./errors/notFound");
-
+const { githubAuth } = require("./config/passport-setup");
 const port = process.env.PORT || 4040;
 
-app.use(express.json());
+/* *****************************************
+ * Middleware
+ ******************************************* */
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "secret",
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ 
+    store: new MongoStore({
       mongoUrl: process.env.MONGODB_URL,
       dbName: "shoppego",
     }),
@@ -29,6 +30,11 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+githubAuth(passport);
+
+
+app.use(express.json()); // Parse JSON bodies
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
@@ -37,52 +43,20 @@ app.use(
   })
 );
 
+/* *****************************************
+ * ROUTE
+ ******************************************* */
 app.use("/", require("./routes"));
 
-// authentication code here
-
-passport.use(
-  new GitHubStrategy(
-    {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: process.env.CALLBACK_URL,
-    },
-    function (accessToken, refreshToken, profile, done) {
-      return done(null, profile);
-    }
-  )
-);
-
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
-passport.deserializeUser((user, done) => {
-  done(null, user);
-});
-
-app.get("/", (req, res) => {
-  res.send(
-    req.session.user !== undefined
-      ? `Logged in as ${req.session.user.username}`
-      : "Logged Out"
-  );
-});
-
-app.get(
-  "/github/callback",
-  passport.authenticate("github", {
-    failureRedirect: "/api-docs",
-  }),
-  (req, res) => {
-    req.session.user = req.user;
-    res.redirect("/");
-  }
-);
-
+/* *****************************************
+ * Global Error Handler
+ ******************************************* */
 app.all("*", notFound);
 app.use(errorHandler);
 
+/* *****************************************
+ * START SERVER AND C0NNECT TO DATABASE
+ ******************************************* */
 mongodb.initDb((err) => {
   if (err) {
     console.error("Failed to connect to MongoDB:", err);
