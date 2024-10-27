@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require('../controller/users');
+const tryCatch = require("../errors/tryCatch");
 const {saveUser} = require('../middleware/validate');
 const {isAuthenticated} = require('../middleware/authenticate')
 
