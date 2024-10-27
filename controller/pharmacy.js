@@ -32,7 +32,7 @@ const getOne = async (req, res) => {
 };
 
 const addPharmacy = async (req, res) => {
-    // #swagger.tags=["pharmacy, addPharmacy"]
+    // #swagger.tags=["pharmacy"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const pharmacyCollection = db.collection("pharmacy");
@@ -55,7 +55,7 @@ const addPharmacy = async (req, res) => {
   };
   
   const updatePharmacy = async (req, res) => {
-    // #swagger.tags=["pharmacy, updatePharmacy"]
+    // #swagger.tags=["pharmacy"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const pharmacyCollection = db.collection("pharmacy");
@@ -81,7 +81,7 @@ const addPharmacy = async (req, res) => {
   };
   
   const deletePharmacy = async (req, res) => {
-    // #swagger.tags=["pharmacy, deletePharmacy"]
+    // #swagger.tags=["pharmacy"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const pharmacyCollection = db.collection("pharmacy");

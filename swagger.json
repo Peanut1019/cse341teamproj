@@ -63,7 +63,7 @@
       },
       "post": {
         "tags": [
-          "grocery, addGrocery"
+          "grocery"
         ],
         "description": "",
         "parameters": [
@@ -121,7 +121,7 @@
       },
       "put": {
         "tags": [
-          "grocery, updateGrocery"
+          "grocery"
         ],
         "description": "",
         "parameters": [
@@ -152,7 +152,7 @@
       },
       "delete": {
         "tags": [
-          "grocery, deleteGrocery"
+          "grocery"
         ],
         "description": "",
         "parameters": [
@@ -182,7 +182,7 @@
     "/library/": {
       "get": {
         "tags": [
-          "library, getAll"
+          "library"
         ],
         "description": "",
         "produces": [
@@ -196,7 +196,7 @@
       },
       "post": {
         "tags": [
-          "library, addBook"
+          "library"
         ],
         "description": "",
         "parameters": [
@@ -269,7 +269,7 @@
       },
       "put": {
         "tags": [
-          "library, updateBook"
+          "library"
         ],
         "description": "",
         "parameters": [
@@ -300,7 +300,7 @@
       },
       "delete": {
         "tags": [
-          "library, deleteBook"
+          "library"
         ],
         "description": "",
         "parameters": [
@@ -341,7 +341,7 @@
       },
       "post": {
         "tags": [
-          "pharmacy, addPharmacy"
+          "pharmacy"
         ],
         "description": "",
         "parameters": [
@@ -402,7 +402,7 @@
       },
       "put": {
         "tags": [
-          "pharmacy, updatePharmacy"
+          "pharmacy"
         ],
         "description": "",
         "parameters": [
@@ -433,7 +433,7 @@
       },
       "delete": {
         "tags": [
-          "pharmacy, deletePharmacy"
+          "pharmacy"
         ],
         "description": "",
         "parameters": [
@@ -462,16 +462,22 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "users"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "post": {
         "tags": [
-          "users, addUser"
+          "users"
         ],
         "description": "",
         "parameters": [
@@ -521,7 +527,13 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "users"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -531,14 +543,17 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
       "put": {
         "tags": [
-          "users, updateUser"
+          "users"
         ],
         "description": "",
         "parameters": [
@@ -569,7 +584,7 @@
       },
       "delete": {
         "tags": [
-          "users, deleteUser"
+          "users"
         ],
         "description": "",
         "parameters": [

@@ -2,7 +2,7 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
-  //#swagger.tags=["grocery, getAll"]
+  //#swagger.tags=["grocery"]
   const result = await mongodb
     .getDataBase()
     .db("shoppego")
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 };
 
 const getOne = async (req, res) => {
-  //#swagger.tags=["grocery, getOne"]
+  //#swagger.tags=["grocery"]
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must be a valid ID to work!");
   }
@@ -33,7 +33,7 @@ const getOne = async (req, res) => {
 };
 
 const addGrocery = async (req, res) => {
-  // #swagger.tags=["grocery, addGrocery"]
+  // #swagger.tags=["grocery"]
   try {
     const db = await mongodb.getDataBase().db("shoppego");
     const groceryCollection = db.collection("grocery");
@@ -55,7 +55,7 @@ const addGrocery = async (req, res) => {
 };
 
 const updateGrocery = async (req, res) => {
-  // #swagger.tags=["grocery, updateGrocery"]
+  // #swagger.tags=["grocery"]
   try {
     const db = await mongodb.getDataBase().db("shoppego");
     const groceryCollection = db.collection("grocery");
@@ -81,7 +81,7 @@ const updateGrocery = async (req, res) => {
 };
 
 const deleteGrocery = async (req, res) => {
-  // #swagger.tags=["grocery, deleteGrocery"]
+  // #swagger.tags=["grocery"]
   try {
     const db = await mongodb.getDataBase().db("shoppego");
     const groceryCollection = db.collection("grocery");

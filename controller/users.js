@@ -2,7 +2,7 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
-  //#swagger.tags=["users, getAll"]
+  //#swagger.tags=["users"]
   const reesult = await mongodb
     .getDataBase()
     .db("shoppego")
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 };
 
 const getOne = async (req, res) => {
-  //#swagger.tags=["users, getOne"]
+  //#swagger.tags=["users"]
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must be a valid ID to work!");
   }
@@ -32,7 +32,7 @@ const getOne = async (req, res) => {
 };
 
 const addUser = async (req, res) => {
-    // #swagger.tags=["users, addUser"]
+    // #swagger.tags=["users"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const usersCollection = db.collection("users");
@@ -57,7 +57,7 @@ const addUser = async (req, res) => {
   };
   
   const updateUser = async (req, res) => {
-    // #swagger.tags=["users, updateUser"]
+    // #swagger.tags=["users"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const usersCollection = db.collection("users");
@@ -83,7 +83,7 @@ const addUser = async (req, res) => {
   };
   
   const deleteUser = async (req, res) => {
-    // #swagger.tags=["users, deleteUser"]
+    // #swagger.tags=["users"]
     try {
       const db = await mongodb.getDataBase().db("shoppego");
       const usersCollection = db.collection("users");
