@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 const groceryController = require("../controller/grocery");
 const {saveGrocery} = require('../middleware/validate');
-const {isAuthenticated} = require('../middleware/authenticate')
-const tryCatch = require("../errors/tryCatch");
+const {isAuthenticated} = require('../middleware/authenticate');
+//const {tryCatcher} = require("../errors/tryCatch");
 
 /**
  * @route   GET /grocery
  * @desc    Get all grocery item
  * @access  Public
  */
-router.get("/", tryCatch, groceryController.getAll);
+router.get("/",  groceryController.getAll);
 
 /**
  * @route   GET /grocery/:id
@@ -18,14 +18,14 @@ router.get("/", tryCatch, groceryController.getAll);
  * @param   {string} id - grocery item ID
  * @access  Public
  */
-router.get("/:id", tryCatch, groceryController.getOne);
+router.get("/:id",  groceryController.getOne);
 
 /**
  * @route   POST /grocery
  * @desc    Add a new grocery item
  * @access  Private
  */
-router.post("/", isAuthenticated, saveGrocery, tryCatch, groceryController.addGrocery);
+router.post("/", isAuthenticated, saveGrocery,  groceryController.addGrocery);
 
 /**
  * @route   PUT /grocery/:id
@@ -33,7 +33,7 @@ router.post("/", isAuthenticated, saveGrocery, tryCatch, groceryController.addGr
  * @param   {string} id - grocery item ID
  * @access  Private
  */
-router.put("/:id", isAuthenticated, saveGrocery, tryCatch, groceryController.updateGrocery);
+router.put("/:id", isAuthenticated, saveGrocery,  groceryController.updateGrocery);
 
 /**
  * @route   DELETE /grocery/:id
@@ -41,6 +41,6 @@ router.put("/:id", isAuthenticated, saveGrocery, tryCatch, groceryController.upd
  * @param   {string} id - grocery item ID
  * @access  Private
  */
-router.delete("/:id", isAuthenticated, tryCatch, groceryController.deleteGrocery);
+router.delete("/:id", isAuthenticated,  groceryController.deleteGrocery);
 
 module.exports = router;

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const libraryController = require('../controller/library');
-const tryCatch = require("../errors/tryCatch");
+//const {tryCatcher} = require("../errors/tryCatch");
 const {saveLibrary} = require('../middleware/validate');
-const {isAuthenticated} = require('../middleware/authenticate')
+const {isAuthenticated} = require('../middleware/authenticate');
 
 
 
@@ -12,7 +12,7 @@ const {isAuthenticated} = require('../middleware/authenticate')
  * @desc    Get all library items
  * @access  Public
  */
-router.get("/", tryCatch, libraryController.getAll);
+router.get("/",  libraryController.getAll);
 
 
 
@@ -22,14 +22,14 @@ router.get("/", tryCatch, libraryController.getAll);
  * @param   {string} id - library item ID
  * @access  Public
  */
-router.get("/:id", tryCatch, libraryController.getOne);
+router.get("/:id",  libraryController.getOne);
 
 /**
  * @route   POST /library
  * @desc    Add a new library item
  * @access  Private
  */
-router.post("/",  isAuthenticated, saveLibrary, tryCatch, libraryController.addBook);
+router.post("/",  isAuthenticated, saveLibrary,  libraryController.addBook);
 
 /**
  * @route   PUT /library/:id
@@ -37,7 +37,7 @@ router.post("/",  isAuthenticated, saveLibrary, tryCatch, libraryController.addB
  * @param   {string} id - library item ID
  * @access  Private
  */
-router.put("/:id", isAuthenticated, saveLibrary, tryCatch, libraryController.updateBook);
+router.put("/:id", isAuthenticated, saveLibrary,  libraryController.updateBook);
 
 /**
  * @route   DELETE /library/:id
@@ -45,6 +45,6 @@ router.put("/:id", isAuthenticated, saveLibrary, tryCatch, libraryController.upd
  * @param   {string} id - library item ID
  * @access  Private
  */
-router.delete("/:id", isAuthenticated, saveLibrary, tryCatch,libraryController.deleteBook);
+router.delete("/:id", isAuthenticated, saveLibrary, libraryController.deleteBook);
 
 module.exports = router;
