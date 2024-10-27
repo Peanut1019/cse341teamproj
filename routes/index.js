@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-// const tryCatcher = require("../errors/tryCatch");
+const {tryCatcher} = require("../errors/tryCatch");
 
 router.use("/", require("./swagger"));
 
@@ -14,14 +14,14 @@ router.get("/login", passport.authenticate("github"), (req, res) => {});
 router.get(
   //swagger.tags=['Logout']
   "/logout",
-  function (req, res, next) {
+  tryCatcher(function (req, res, next) {
     req.logout(function (err) {
       if (err) {
         return next(err);
       }
       res.redirect("/");
     });
-  }
+  })
 );
 
 router.get("/", (req, res) => {

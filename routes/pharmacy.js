@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const pharmController = require('../controller/pharmacy');
+<<<<<<< HEAD
 // const tryCatch = require("../errors/tryCatch");
+=======
+//const {tryCatcher} = require("../errors/tryCatch");
+>>>>>>> 0725b0383c0aa6302325628fd94d15084d05b362
 const {savePharmacy} = require('../middleware/validate');
-const {isAuthenticated} = require('../middleware/authenticate')
+const {isAuthenticated} = require('../middleware/authenticate');
 
 
 /**
@@ -11,7 +15,11 @@ const {isAuthenticated} = require('../middleware/authenticate')
  * @desc    Get all pharmacy items
  * @access  Public
  */
+<<<<<<< HEAD
 router.get("/", pharmController.getAll);
+=======
+router.get("/",  pharmController.getAll);
+>>>>>>> 0725b0383c0aa6302325628fd94d15084d05b362
 
 /**
  * @route   GET /pharmacy/:id
@@ -19,14 +27,14 @@ router.get("/", pharmController.getAll);
  * @param   {string} id - pharmacy item ID
  * @access  Public
  */
-router.get("/:id", pharmController.getOne);
+router.get("/:id",  pharmController.getOne);
 
 /**
  * @route   POST /pharmacy
  * @desc    Add a new pharmacy item
  * @access  Private
  */
-router.post("/",  isAuthenticated, savePharmacy, pharmController.addPharmacy);
+router.post("/",  isAuthenticated, savePharmacy,  pharmController.addPharmacy);
 
 /**
  * @route   PUT /pharmacy/:id
@@ -34,7 +42,7 @@ router.post("/",  isAuthenticated, savePharmacy, pharmController.addPharmacy);
  * @param   {string} id - pharmacy item ID
  * @access  Private
  */
-router.put("/:id", isAuthenticated, savePharmacy, pharmController.updatePharmacy);
+router.put("/:id", isAuthenticated, savePharmacy,  pharmController.updatePharmacy);
 
 /**
  * @route   DELETE /pharmacy/:id
@@ -42,6 +50,6 @@ router.put("/:id", isAuthenticated, savePharmacy, pharmController.updatePharmacy
  * @param   {string} id - pharmacy item ID
  * @access  Private
  */
-router.delete("/:id", isAuthenticated, pharmController.deletePharmacy);
+router.delete("/:id", isAuthenticated,   pharmController.deletePharmacy);
 
 module.exports = router;

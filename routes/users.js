@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const userController = require('../controller/users');
-// const tryCatch = require("../errors/tryCatch");
+//const {tryCatcher} = require("../errors/tryCatch");
 const {saveUser} = require('../middleware/validate');
-const {isAuthenticated} = require('../middleware/authenticate')
+const {isAuthenticated} = require('../middleware/authenticate');
 
 /**
  * @route   GET /users
@@ -41,6 +41,6 @@ router.put("/:id", isAuthenticated, saveUser, userController.updateUser);
  * @param   {string} id - user ID
  * @access  Private
  */
-router.delete("/:id", isAuthenticated, saveUser, userController.deleteUser);
+router.delete("/:id", isAuthenticated, userController.deleteUser);
 
 module.exports = router;
