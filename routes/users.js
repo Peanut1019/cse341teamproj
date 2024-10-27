@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require('../controller/users');
-const tryCatch = require("../errors/tryCatch");
+// const tryCatch = require("../errors/tryCatch");
 const {saveUser} = require('../middleware/validate');
 const {isAuthenticated} = require('../middleware/authenticate')
 
@@ -10,7 +10,7 @@ const {isAuthenticated} = require('../middleware/authenticate')
  * @desc    Get all users
  * @access  Public
  */
-router.get("/", tryCatch, userController.getAll);
+router.get("/", userController.getAll);
 
 /**
  * @route   GET /users/:id
@@ -18,14 +18,14 @@ router.get("/", tryCatch, userController.getAll);
  * @param   {string} id - user ID
  * @access  Public
  */
-router.get("/:id", tryCatch, userController.getOne);
+router.get("/:id", userController.getOne);
 
 /**
  * @route   POST /users
  * @desc    Add a new user
  * @access  Private
  */
-router.post("/", isAuthenticated, saveUser, tryCatch, userController.addUser);
+router.post("/", isAuthenticated, saveUser, userController.addUser);
 
 /**
  * @route   PUT /users/:id
@@ -33,7 +33,7 @@ router.post("/", isAuthenticated, saveUser, tryCatch, userController.addUser);
  * @param   {string} id - user ID
  * @access  Private
  */
-router.put("/:id", isAuthenticated, saveUser, tryCatch, userController.updateUser);
+router.put("/:id", isAuthenticated, saveUser, userController.updateUser);
 
 /**
  * @route   DELETE /users/:id
@@ -41,6 +41,6 @@ router.put("/:id", isAuthenticated, saveUser, tryCatch, userController.updateUse
  * @param   {string} id - user ID
  * @access  Private
  */
-router.delete("/:id", isAuthenticated, saveUser,  userController.deleteUser);
+router.delete("/:id", isAuthenticated, saveUser, userController.deleteUser);
 
 module.exports = router;
