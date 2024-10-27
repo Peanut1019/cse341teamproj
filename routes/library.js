@@ -22,7 +22,7 @@ router.get("/", tryCatch, libraryController.getAll);
  * @param   {string} id - library item ID
  * @access  Public
  */
-router.get("/:id", tryCatch(libraryController.getOne));
+router.get("/:id", tryCatch, libraryController.getOne);
 
 /**
  * @route   POST /library

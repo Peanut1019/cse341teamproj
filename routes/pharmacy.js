@@ -11,7 +11,7 @@ const {isAuthenticated} = require('../middleware/authenticate')
  * @desc    Get all pharmacy items
  * @access  Public
  */
-router.get("/", tryCatch(pharmController.getAll));
+router.get("/", tryCatch, pharmController.getAll);
 
 /**
  * @route   GET /pharmacy/:id
@@ -19,7 +19,7 @@ router.get("/", tryCatch(pharmController.getAll));
  * @param   {string} id - pharmacy item ID
  * @access  Public
  */
-router.get("/:id", tryCatch(pharmController.getOne));
+router.get("/:id", tryCatch, pharmController.getOne);
 
 /**
  * @route   POST /pharmacy
