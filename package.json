@@ -2,11 +2,8 @@
   "name": "cse341teamproj",
   "version": "1.0.0",
   "main": "server.js",
-  "jest": {
-    "preset": "@shelf/jest-mongodb"
-  },
   "scripts": {
-    "test": "jest --watch --coverage",
+    "test": "jest",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
@@ -40,6 +37,7 @@
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^4.3.2",
+    "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
     "nodemon": "^3.1.7",
     "swagger-autogen": "^2.23.7",

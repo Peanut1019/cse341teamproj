@@ -1,5 +1,5 @@
 const mongodb = require("../data/database");
-const ObjectId = require("mongodb").ObjectId;
+const { ObjectId } = require("mongodb");
 
 const getAll = async (req, res) => {
   //#swagger.tags=["grocery"]
@@ -17,7 +17,7 @@ const getAll = async (req, res) => {
 const getOne = async (req, res) => {
   //#swagger.tags=["grocery"]
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must be a valid ID to work!");
+    return res.status(400).json("Must be a valid ID to work!");
   }
   const grocerId = new ObjectId(req.params.id);
   const result = await mongodb

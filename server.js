@@ -32,7 +32,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 githubAuth(passport);
 
-
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true }));
 
