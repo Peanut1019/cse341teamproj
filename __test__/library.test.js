@@ -1,10 +1,10 @@
 const {
-  getOne,
   getAll,
-  addPharmacy,
-  updatePharmacy,
-  deletePharmacy,
-} = require("../controller/pharmacy");
+  getOne,
+  addBook,
+  updateBook,
+  deleteBook,
+} = require("../controller/library");
 const mongodb = require("../data/database");
 const { ObjectId } = require("mongodb");
 
@@ -20,8 +20,8 @@ jest.mock("../data/database", () => ({
       collection: jest.fn(() => ({
         find: jest.fn(() => ({
           toArray: jest.fn().mockResolvedValue([
-            { name: "Insulin Glargine", category: "Injection" },
-            { name: "Amoxicillin", category: "Capsule" },
+            { name: "Apple", category: "Fruit" },
+            { name: "Bread", category: "Bakery" },
           ]),
         })),
         insertOne: jest.fn(() => ({
@@ -40,13 +40,12 @@ jest.mock("../data/database", () => ({
 
 const mockReq = {
   params: {
-    id: "671d5e065582519d07791206",
+    id: "671199684ca665efc45767c4",
   },
   body: {
-    medication_name: "Advil",
-    dosage: "50mg",
-    form: "Tablet",
-    prescription_required: "No",
+    item_name: "bread",
+    price: "5.99",
+    store: "1",
   },
 };
 const mockRes = {
@@ -55,7 +54,7 @@ const mockRes = {
   setHeader: jest.fn(),
 };
 describe("get users", () => {
-  test("Should get all pharmacy", async () => {
+  test("Should get all Library", async () => {
     await getAll(mockReq, mockRes);
     expect(mongodb.getDataBase).toHaveBeenCalled();
     expect(mockRes.status).toHaveBeenCalledWith(200);
@@ -69,7 +68,7 @@ describe("get users", () => {
     expect(ObjectId.isValid).toHaveBeenCalledWith(mockReq.params.id);
   });
 
-  test("Should return status of 200 and the med created", async () => {
+  test("Should return status of 200 and the user created", async () => {
     jest.spyOn(ObjectId, "isValid").mockImplementationOnce(() => ({
       isValid: jest.fn(() => true),
     }));
@@ -84,22 +83,26 @@ describe("get users", () => {
   });
 });
 
-describe("create & update pharmacy", () => {
-  test("Should add pharmacy to db and return status 201", async () => {
-    await addPharmacy(mockReq, mockRes);
+describe("create & update Library", () => {
+  test("Should add Library to db and return status 201", async () => {
+    await addBook(mockReq, mockRes);
     expect(mongodb.getDataBase).toHaveBeenCalled();
     expect(mockRes.status).toHaveBeenCalledWith(201);
     expect(mockRes.json).toHaveBeenCalledWith({
-      message: "Pharmacy item added successfully",
+      message: "Library item added successfully",
       data: "1234567890",
     });
   });
 
-  test("Should update pharmacy in db and return status 200 and success message", async () => {
-    await updatePharmacy(mockReq, mockRes);
+  test("Should update Library in db and return status 200 and sucess message", async () => {
+    await updateBook(mockReq, mockRes);
     // Assertions
     expect(mongodb.getDataBase).toHaveBeenCalled(); // Check if getDataBase was called
-    expect(mockRes.status).toHaveBeenCalledWith(200); // Check if status 200 was set // Adjust as necessary
+    expect(mockRes.status).toHaveBeenCalledWith(200); // Check if status 200 was set
+    expect(mockRes.json).toHaveBeenCalledWith({
+      message:
+        "Library item with ID 671199684ca665efc45767c4 updated successfully",
+    }); // Adjust as necessary
   });
 
   test("Should return status 404 and failure message", async () => {
@@ -110,23 +113,23 @@ describe("create & update pharmacy", () => {
         })),
       })),
     }));
-    await updatePharmacy(mockReq, mockRes);
+    await updateBook(mockReq, mockRes);
     expect(mongodb.getDataBase).toHaveBeenCalled();
     expect(mockRes.status).toHaveBeenCalledWith(404);
     expect(mockRes.json).toHaveBeenCalledWith({
-      message: "Pharmacy item not found",
+      message: "Library item not found",
     });
   });
 });
 
-describe("Delete pharmacy", () => {
-  test("Should delete pharmacy in db and return status 200 and sucess message", async () => {
-    await deletePharmacy(mockReq, mockRes);
+describe("Delete Library", () => {
+  test("Should delete Library in db and return status 200 and sucess message", async () => {
+    await deleteBook(mockReq, mockRes);
     // Assertions
     expect(mongodb.getDataBase).toHaveBeenCalled();
     expect(mockRes.status).toHaveBeenCalledWith(200);
     expect(mockRes.json).toHaveBeenCalledWith({
-      message: "Pharmacy item deleted successfully",
+      message: "Library item deleted successfully",
     });
   });
 
@@ -138,11 +141,11 @@ describe("Delete pharmacy", () => {
         })),
       })),
     }));
-    await deletePharmacy(mockReq, mockRes);
+    await deleteBook(mockReq, mockRes);
     expect(mongodb.getDataBase).toHaveBeenCalled();
     expect(mockRes.status).toHaveBeenCalledWith(404);
     expect(mockRes.json).toHaveBeenCalledWith({
-      message: "Pharmacy item not found",
+      message: "Library item not found",
     });
   });
 });
